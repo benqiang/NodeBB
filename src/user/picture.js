@@ -72,7 +72,8 @@ module.exports = function(User) {
 					return callback(err);
 				}
 
-				if (!oldpicture) {
+				// 这里增加判断条件，过滤掉默认图。因为上传新头会将原来的头像删除
+				if (!oldpicture || oldpicture.endsWith('0-profileimg.jpg')) {
 					return file.saveFileToLocal(filename, 'profile', picture.path, done);
 				}
 
