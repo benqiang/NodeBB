@@ -183,7 +183,11 @@ function continueLogin(req, res, next) {
 					plugins.fireHook('action:user.loggedIn', userData.uid);
 				}
 
-				if (!req.session.returnTo) {
+				// 这里就是要改的地方，添加对是否存在nextTo参数的判断，如果有，就返回
+				if (req.body.nextTo) {
+					res.status(200).send(req.body.nextTo);
+
+				} else if (!req.session.returnTo) {
 					res.status(200).send(nconf.get('relative_path') + '/');
 				} else {
 					var next = req.session.returnTo;

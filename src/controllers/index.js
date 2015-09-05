@@ -94,6 +94,13 @@ Controllers.login = function(req, res, next) {
 	data.error = req.flash('error')[0];
 	data.title = '[[pages:login]]';
 
+	// 这一块就是需要添加的
+	data.needToNext = false;
+	if (undefined !== req.query.next) {
+		data.needToNext = true;
+		data.nextToUrl = req.query.next;
+	}
+
 	res.render('login', data);
 };
 

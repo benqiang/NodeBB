@@ -24,7 +24,7 @@ module.exports = function(User) {
 			if (err)  {
 				return callback(err);
 			}
-			
+
 			// 注释掉gravatar的使用
 			//var gravatar = User.createGravatarURLFromEmail(data.email);
 			var timestamp = data.timestamp || Date.now();
