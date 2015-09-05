@@ -73,6 +73,12 @@ authenticationController.register = function(req, res, next) {
 			return res.status(400).send(err.message);
 		}
 
+		// 将模板数据修改一下即可
+		if (req.body.nextTo) {
+			data.referrer = req.body.nextTo;
+
+		}
+
 		res.json(data);
 	});
 };

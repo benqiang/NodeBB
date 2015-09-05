@@ -140,6 +140,13 @@ Controllers.register = function(req, res, next) {
 			data.error = req.flash('error')[0];
 			data.title = '[[pages:register]]';
 
+			// 添加如下
+			data.needToNext = false;
+			if (undefined !== req.query.next) {
+				data.needToNext = true;
+				data.nextToUrl = req.query.next;
+			}
+
 			plugins.fireHook('filter:register.build', {req: req, res: res, templateData: data}, next);
 		}
 	], function(err, data) {
