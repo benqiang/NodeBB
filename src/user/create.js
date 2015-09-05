@@ -54,6 +54,28 @@ module.exports = function(User) {
 				'status': 'online'
 			};
 
+			if (data.bq_registration_realname) {
+				userData['bq_registration_realname'] = data.bq_registration_realname;
+			}
+			if (data.bq_registration_company) {
+				userData['bq_registration_company'] = data.bq_registration_company;
+			}
+			if (data.bq_registration_company_email) {
+				userData['bq_registration_company_email'] = data.bq_registration_company_email;
+			}
+			if (data.bq_registration_mobile) {
+				userData['bq_registration_mobile'] = data.bq_registration_mobile;
+			}
+			if (data.bq_registration_wechat) {
+				userData['bq_registration_wechat'] = data.bq_registration_wechat;
+			}
+			if (data.bq_registration_namecard) {
+				userData['bq_registration_namecard'] = data.bq_registration_namecard;
+			}
+			if (data.bq_reg_has_authenticated) {
+				userData['bq_reg_has_authenticated'] = data.bq_reg_has_authenticated;
+			}
+
 			async.parallel({
 				renamedUsername: function(next) {
 					renameUsername(userData, next);

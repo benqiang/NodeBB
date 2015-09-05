@@ -62,7 +62,11 @@
 				}));
 			});
 
-			router.post('/register', Auth.middleware.applyCSRF, controllers.authentication.register);
+			// 添加对文件上传的解析中间件
+			var multipart = require('connect-multiparty');
+			var multipartMiddleware = multipart();
+			var middlewares = [multipartMiddleware];
+			router.post('/register', middlewares.concat([Auth.middleware.applyCSRF]), controllers.authentication.register);
 			router.post('/login', Auth.middleware.applyCSRF, controllers.authentication.login);
 			router.post('/logout', Auth.middleware.applyCSRF, controllers.authentication.logout);
 

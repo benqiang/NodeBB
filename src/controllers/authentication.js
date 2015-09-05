@@ -6,6 +6,11 @@ var async = require('async'),
 	nconf = require('nconf'),
 	validator = require('validator'),
 
+	path = require('path'),
+	fs = require('fs'),
+
+	file = require('../file'),
+
 	db = require('../database'),
 	meta = require('../meta'),
 	user = require('../user'),
@@ -30,7 +35,15 @@ authenticationController.register = function(req, res, next) {
 		}
 	}
 
+	winston.verbose('Register body = ' + JSON.stringify(req.body));
+	winston.verbose('Register body file = ' + JSON.stringify(req.files.file_namecard));
+
 	var uid;
+
+	// 得到图片文件对象
+	var uploadedFile = req.files.file_namecard;
+	var tmpNamecardUrl = '';
+
 	async.waterfall([
 		function(next) {
 			if (registrationType === 'invite-only') {
@@ -61,24 +74,79 @@ authenticationController.register = function(req, res, next) {
 		function(next) {
 			plugins.fireHook('filter:register.check', {req: req, res: res, userData: userData}, next);
 		},
+		function (data, next) {
+			// 检查是否有图
+			if (!uploadedFile) {
+				return next(new Error('请上传名片'));
+			}
+			// 对图片类型进行检查，如果需要，在此加入图片大小的检查
+			winston.verbose('register - uploadedFile validate');
+			var err = validateUpload(uploadedFile);
+			if (err) {
+				return next(err);
+			}
+			winston.verbose('register - uploadedFile validate done');
+
+			next(null, data);
+		},
+		function(data, next) {
+			// 图片保存到本地
+			upload(uploadedFile, function (err, imgurl) {
+				if (err) {
+					next(err);
+				} else {
+					tmpNamecardUrl = imgurl;
+					next(null, data);
+				}
+			});
+
+		},
 		function(data, next) {
 			if (registrationType === 'normal' || registrationType === 'invite-only') {
 				registerAndLoginUser(req, res, userData, next);
 			} else if (registrationType === 'admin-approval') {
 				addToApprovalQueue(req, res, userData, next);
 			}
+		},
+		function(data, next) {
+
+			winston.verbose('mid-reg data=' + JSON.stringify(data));
+			if (registrationType === 'normal' || registrationType === 'invite-only') {
+				// 执行完前面的步骤（图片检查通过、保存到本地通过、注册用户信息通过），在此将图片的路径也保存到数据库中。
+				// 这样就完成了，图片的上传及保存
+				db.setObjectField('user:' + data.uid, 'namecard', tmpNamecardUrl, function(err) {
+					if (err) {
+						winston.verbose('mid-reg-save to db failed, err = ' + err.message);
+						next(err);
+					} else {
+						winston.verbose('mid-reg-save to db suc, data = ' + JSON.stringify(data));
+						next(null, data);
+					}
+				});
+			}  else if (registrationType === 'admin-approval') {
+				 db.setObject('registration:queue:name:' + userData.username, {bq_registration_namecard: tmpNamecardUrl}, function(err) {
+					 if (err) {
+						next(err);
+					 } else {
+						 next(null, data);
+					 }
+				 });
+			}
+
+
 		}
 	], function(err, data) {
 		if (err) {
+			winston.verbose('register complete. err = ' + err.message);
 			return res.status(400).send(err.message);
 		}
 
 		// 将模板数据修改一下即可
-		if (req.body.nextTo) {
+		if (registrationType !== 'admin-approval' && req.body.nextTo) {
 			data.referrer = req.body.nextTo;
 
 		}
-
+		winston.verbose('done-reg data=' + JSON.stringify(data));
 		res.json(data);
 	});
 };
@@ -280,5 +348,40 @@ authenticationController.logout = function(req, res, next) {
 	}
 };
 
+function upload(uploadedFile, callback) {
+	var md5Str = md5(uploadedFile.name + uploadedFile.type + uploadedFile.size);
+	var filename = md5Str + path.extname(uploadedFile.name);
+	uploadImage(filename, 'namecard', uploadedFile, callback);
+
+}
+
+function validateUpload(uploadedFile) {
+	var err = null;
+	var allowedTypes = ['image/png', 'image/jpeg', 'image/pjpeg', 'image/jpg', 'image/gif'];
+	if (allowedTypes.indexOf(uploadedFile.type) === -1) {
+		fs.unlink(uploadedFile.path);
+		err = new Error('图片格式只能是png、jpeg/jpg、gif');
+	}
+	return err;
+}
+
+function uploadImage(filename, folder, uploadedFile, callback) {
+	function done(err, image) {
+		fs.unlink(uploadedFile.path);
+		if (err) {
+			return callback(err);
+		}
+		return callback(null, nconf.get('relative_path') + image.url);
+	}
+	file.saveFileToLocal(filename, folder, uploadedFile.path, done);
+}
+
+function md5(data) {
+	var Buffer = require("buffer").Buffer;
+	var buf = new Buffer(data);
+	var str = buf.toString("binary");
+	var crypto = require("crypto");
+	return crypto.createHash("md5").update(str).digest("hex");
+}
 
 module.exports = authenticationController;

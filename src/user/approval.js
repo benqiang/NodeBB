@@ -30,7 +30,15 @@ module.exports = function(User) {
 					username: userData.username,
 					email: userData.email,
 					ip: userData.ip,
-					hashedPassword: hashedPassword
+					hashedPassword: hashedPassword,
+
+					// 添加自定义字段
+					bq_registration_realname: userData.bq_registration_realname,
+					bq_registration_company: userData.bq_registration_company,
+					bq_registration_company_email: userData.bq_registration_company_email,
+					bq_registration_mobile: userData.bq_registration_mobile,
+					bq_registration_wechat: userData.bq_registration_wechat,
+					bq_reg_has_authenticated: userData.bq_reg_has_authenticated
 				};
 
 				db.setObject('registration:queue:name:' + userData.username, data, next);
@@ -73,6 +81,10 @@ module.exports = function(User) {
 					return callback(new Error('[[error:invalid-data]]'));
 				}
 				userData = _userData;
+
+				// 新增字段 --- 认证成功
+				userData.bq_reg_has_authenticated = 'auth_suc';
+
 				User.create(userData, next);
 			},
 			function(_uid, next) {
@@ -159,29 +171,30 @@ module.exports = function(User) {
 					}
 				});
 
-				async.map(users, function(user, next) {
-					if (!user) {
-						return next(null, user);
-					}
-
-					// temporary: see http://www.stopforumspam.com/forum/viewtopic.php?id=6392
-					user.ip = user.ip.replace('::ffff:', '');
-
-					request('http://api.stopforumspam.org/api?ip=' + user.ip + '&email=' + user.email + '&username=' + user.username + '&f=json', function (err, response, body) {
-						if (err) {
-							return next(null, user);
-						}
-						if (response.statusCode === 200) {
-							var data = JSON.parse(body);
-							user.spamData = data;
-
-							user.usernameSpam = data.username.frequency > 0 || data.username.appears > 0;
-							user.emailSpam = data.email.frequency > 0 || data.email.appears > 0;
-							user.ipSpam = data.ip.frequency > 0 || data.ip.appears > 0;
-						}
-						next(null, user);
-					});
-				}, next);
+				//async.map(users, function(user, next) {
+				//	if (!user) {
+				//		return next(null, user);
+				//	}
+                //
+				//	// temporary: see http://www.stopforumspam.com/forum/viewtopic.php?id=6392
+				//	user.ip = user.ip.replace('::ffff:', '');
+                //
+				//	request('http://api.stopforumspam.org/api?ip=' + user.ip + '&email=' + user.email + '&username=' + user.username + '&f=json', function (err, response, body) {
+				//		if (err) {
+				//			return next(null, user);
+				//		}
+				//		if (response.statusCode === 200) {
+				//			var data = JSON.parse(body);
+				//			user.spamData = data;
+                //
+				//			user.usernameSpam = data.username.frequency > 0 || data.username.appears > 0;
+				//			user.emailSpam = data.email.frequency > 0 || data.email.appears > 0;
+				//			user.ipSpam = data.ip.frequency > 0 || data.ip.appears > 0;
+				//		}
+				//		next(null, user);
+				//	});
+				//}, next);
+				next(null, users);
 			}
 		], callback);
 	};
