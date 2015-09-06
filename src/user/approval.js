@@ -35,7 +35,7 @@ module.exports = function(User) {
 					// 添加自定义字段
 					bq_registration_realname: userData.bq_registration_realname,
 					bq_registration_company: userData.bq_registration_company,
-					bq_registration_company_email: userData.bq_registration_company_email,
+					//bq_registration_company_email: userData.bq_registration_company_email,
 					bq_registration_mobile: userData.bq_registration_mobile,
 					bq_registration_wechat: userData.bq_registration_wechat,
 					bq_reg_has_authenticated: userData.bq_reg_has_authenticated

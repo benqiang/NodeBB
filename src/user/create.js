@@ -60,9 +60,9 @@ module.exports = function(User) {
 			if (data.bq_registration_company) {
 				userData['bq_registration_company'] = data.bq_registration_company;
 			}
-			if (data.bq_registration_company_email) {
-				userData['bq_registration_company_email'] = data.bq_registration_company_email;
-			}
+			//if (data.bq_registration_company_email) {
+			//	userData['bq_registration_company_email'] = data.bq_registration_company_email;
+			//}
 			if (data.bq_registration_mobile) {
 				userData['bq_registration_mobile'] = data.bq_registration_mobile;
 			}

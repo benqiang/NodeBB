@@ -19,7 +19,7 @@ module.exports = function(User) {
 		var fields = ['username', 'email', 'fullname', 'website', 'location', 'birthday', 'signature', 'aboutme',
 			'bq_registration_realname',
 			'bq_registration_company',
-			'bq_registration_company_email',
+			//'bq_registration_company_email',
 			'bq_registration_mobile',
 			'bq_registration_wechat'
 		];
