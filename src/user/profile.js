@@ -106,7 +106,18 @@ module.exports = function(User) {
 				});
 			}
 
-			async.series([isAboutMeValid, isSignatureValid, isEmailAvailable, isUsernameAvailable], function(err) {
+			function isMobileAvailable(next) {
+				if (!data.bq_registration_mobile) {
+					return next();
+				}
+				if (!validator.isMobilePhone(data.bq_registration_mobile, 'zh-CN')) {
+					return next(new Error('手机号无效'));
+				} else {
+					next();
+				}
+			}
+
+			async.series([isAboutMeValid, isSignatureValid, isEmailAvailable, isUsernameAvailable, isMobileAvailable], function(err) {
 				if (err) {
 					return callback(err);
 				}
