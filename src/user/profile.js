@@ -50,7 +50,7 @@ module.exports = function(User) {
 
 			function isEmailAvailable(next) {
 				if (!data.email) {
-					return next();
+					return next(new Error('邮件地址不能为空'));
 				}
 
 				if (!utils.isEmailValid(data.email)) {
@@ -74,7 +74,7 @@ module.exports = function(User) {
 
 			function isUsernameAvailable(next) {
 				if (!data.username) {
-					return next();
+					return next(new Error('用户名不能为空'));
 				}
 				User.getUserFields(uid, ['username', 'userslug'], function(err, userData) {
 
@@ -108,7 +108,7 @@ module.exports = function(User) {
 
 			function isMobileAvailable(next) {
 				if (!data.bq_registration_mobile) {
-					return next();
+					return next(new Error('手机号不能为空'));
 				}
 				if (!validator.isMobilePhone(data.bq_registration_mobile, 'zh-CN')) {
 					return next(new Error('手机号无效'));
@@ -117,7 +117,21 @@ module.exports = function(User) {
 				}
 			}
 
-			async.series([isAboutMeValid, isSignatureValid, isEmailAvailable, isUsernameAvailable, isMobileAvailable], function(err) {
+			function isOtherFieldsNull(next) {
+				if (!data.bq_registration_realname) {
+					return next(new Error('真实姓名不能为空'));
+				}
+				if (!data.bq_registration_company) {
+					return next(new Error('公司名称不能为空'));
+				}
+				if (!data.bq_registration_wechat) {
+					return next(new Error('微信号不能为空'));
+				}
+				next();
+
+			}
+
+			async.series([isAboutMeValid, isSignatureValid, isEmailAvailable, isUsernameAvailable, isOtherFieldsNull, isMobileAvailable], function(err) {
 				if (err) {
 					return callback(err);
 				}
