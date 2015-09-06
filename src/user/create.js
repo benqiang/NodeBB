@@ -43,8 +43,8 @@ module.exports = function(User) {
 				'website': '',
 				'signature': '',
 				// 把picture再加上，并将下面这两项改为默认的图片
-				'picture': '/uploads/profile/2-profileimg.jpg',
-				'uploadedpicture': '/uploads/profile/2-profileimg.jpg',
+				'picture': '/uploads/profile/0-profileimg.jpg',
+				'uploadedpicture': '/uploads/profile/0-profileimg.jpg',
 				'profileviews': 0,
 				'reputation': 0,
 				'postcount': 0,
