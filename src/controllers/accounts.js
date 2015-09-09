@@ -590,4 +590,19 @@ accountsController.getChats = function(req, res, callback) {
 	});
 };
 
+accountsController.confirmUserRegEmail = function(req, res, next) {
+	var confirm_code = req.query.code;
+	user.confirmUserRegEmail(confirm_code, function(err, result) {
+		var data = {};
+		if (err) {
+			data.err = err;
+			winston.verbose('confirmUserRegEmail failed. err = ' + err.message);
+		} else {
+			data.err = null;
+			winston.verbose('confirmUserRegEmail suc');
+		}
+		res.render('result_reg_email_confirm', data);
+	});
+};
+
 module.exports = accountsController;

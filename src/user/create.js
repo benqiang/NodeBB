@@ -229,6 +229,39 @@ module.exports = function(User) {
 				callback(null, username);
 			});
 		});
-	}
+	};
+
+	User.createWaitingConfirmUser = function(data, callback) {
+		var userData = {
+			'username': data.username,
+			'email': data.email,
+			'hashedPassword': data.hashedPassword,
+			'bq_registration_realname': data.bq_registration_realname,
+			'bq_registration_company': data.bq_registration_company,
+			'bq_registration_mobile': data.bq_registration_mobile,
+			'bq_registration_wechat': data.bq_registration_wechat,
+			'bq_registration_namecard': data.bq_registration_namecard,
+			'bq_reg_has_authenticated': data.bq_reg_has_authenticated,
+			'confirm_code': data.confirm_code
+		};
+		async.waterfall([
+			function(next) {
+				db.incrObjectField('global', 'nextWaitingConfirmUid', next);
+			},
+			function(uid, next) {
+				userData.uid = uid;
+				db.setObject('waitingconfirm:user:' + uid, userData, next);
+
+			},
+			function(next) {
+				db.sortedSetAdd('confirm_code:uid', userData.uid, userData.confirm_code, next);
+			}
+			], function(err, result) {
+				if (!err) {
+					callback(null, userData.uid);
+				}
+			});
+
+	};
 
 };

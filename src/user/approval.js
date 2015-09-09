@@ -5,6 +5,8 @@ var async = require('async'),
 	nconf = require('nconf'),
 	request = require('request'),
 
+	uuid = require('uuid'),
+
 	db = require('../database'),
 	meta = require('../meta'),
 	emailer = require('../emailer'),
@@ -69,9 +71,14 @@ module.exports = function(User) {
 		});
 	}
 
+
+	// 管理员批准后，给用户发送确认邮件，并将信息转存到另一个列表中，并从注册队列中删除
 	User.acceptRegistration = function(username, callback) {
-		var uid;
+		var uid = 0;
 		var userData;
+		//var host = 'http://localhost:4567/';
+		var host = 'http://bbs.xintuomarket.com/';
+
 		async.waterfall([
 			function(next) {
 				db.getObject('registration:queue:name:' + username, next);
@@ -82,38 +89,32 @@ module.exports = function(User) {
 				}
 				userData = _userData;
 
-				// 新增字段 --- 认证成功
-				userData.bq_reg_has_authenticated = 'auth_suc';
+				// 新增字段 --- 认证code
+				userData.confirm_code = md5(uuid.v4());
 
-				User.create(userData, next);
+				User.createWaitingConfirmUser(userData, next);
 			},
 			function(_uid, next) {
 				uid = _uid;
-				User.setUserField(uid, 'password', userData.hashedPassword, next);
+				next();
 			},
 			function(next) {
-				var title = meta.config.title || meta.config.browserTitle || 'NodeBB';
+				var title = meta.config.title || meta.config.browserTitle || '信托麦客';
 				translator.translate('[[email:welcome-to, ' + title + ']]', meta.config.defaultLang, function(subject) {
 					var data = {
 						site_title: title,
 						username: username,
 						subject: subject,
 						template: 'registration_accepted',
-						uid: uid
+						uid: uid,
+						confirm_url: host + 'user/confirm?code=' + userData.confirm_code
 					};
-
-					emailer.send('registration_accepted', uid, data, next);
+					emailer.sendToEmail('registration_accepted', userData.email, 'zh_CN', data, next);
 				});
-			},
-			function(next) {
-				User.notifications.sendWelcomeNotification(uid, next);
 			},
 			function(next) {
 				removeFromQueue(username, next);
 			},
-			function(next) {
-				markNotificationRead(username, next);
-			}
 		], callback);
 	};
 
@@ -133,12 +134,27 @@ module.exports = function(User) {
 
 	User.rejectRegistration = function(username, callback) {
 		async.waterfall([
+			function(next) {
+				db.getObject('registration:queue:name:' + username, next);
+			},
+			function(_userData, next) {
+				var title = meta.config.title || meta.config.browserTitle || '信托麦客';
+
+				var data = {
+					site_title: title,
+					username: username,
+					subject: '信托麦客注册审核未通过',
+					template: 'registration_rejected'
+				};
+				emailer.sendToEmail('registration_rejected', _userData.email, 'zh_CN', data, next);
+			},
 			function (next) {
 				removeFromQueue(username, next);
 			},
 			function (next) {
 				markNotificationRead(username, next);
 			}
+
 		], callback);
 	};
 
@@ -146,6 +162,15 @@ module.exports = function(User) {
 		async.parallel([
 			async.apply(db.sortedSetRemove, 'registration:queue', username),
 			async.apply(db.delete, 'registration:queue:name:' + username)
+		], function(err, results) {
+			callback(err);
+		});
+	}
+
+	function removeFromWaitConfirmQueue(confirm_code, wuid, callback) {
+		async.parallel([
+			async.apply(db.sortedSetRemove, 'confirm_code:uid', confirm_code),
+			async.apply(db.delete, 'waitingconfirm:user:' + wuid)
 		], function(err, results) {
 			callback(err);
 		});
@@ -199,5 +224,49 @@ module.exports = function(User) {
 		], callback);
 	};
 
+	User.confirmUserRegEmail = function (confirm_code, callback) {
+		// 通过confirm_code查找waiting列表中的数据，将waiting列表的数据转到注册列表中
+		// 并从waiting列表删除
+		var uid;
+		var wuid;
+		var wUserData;
+		async.waterfall([
+			function(next) {
+				db.sortedSetScore('confirm_code:uid', confirm_code, next);
+			},
+			function(_wuid, next) {
+				wuid = _wuid;
+				db.getObject('waitingconfirm:user:' + _wuid, next)
+			},
+			function(_wUserData, next) {
+				wUserData = _wUserData;
+				if (!_wUserData) {
+					return callback(new Error('The user is not exist.'));
+				}
+				User.create(wUserData, next);
+			},
+			function(_uid, next) {
+				uid = _uid;
+				User.setUserField(uid, 'password', wUserData.hashedPassword, next);
+			},
+			function(next) {
+				User.notifications.sendWelcomeNotification(uid, next);
+			},
+			function(next) {
+				removeFromWaitConfirmQueue(confirm_code, wuid, next);
+			},
+			function(next) {
+				markNotificationRead(wUserData.username, next);
+			}
+		], callback);
 
+	};
+
+	function md5(data) {
+		var Buffer = require("buffer").Buffer;
+		var buf = new Buffer(data);
+		var str = buf.toString("binary");
+		var crypto = require("crypto");
+		return crypto.createHash("md5").update(str).digest("hex");
+	}
 };

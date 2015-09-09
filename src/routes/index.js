@@ -73,6 +73,8 @@ function accountRoutes(app, middleware, controllers) {
 
 	setupPageRoute(app, '/notifications', middleware, [middleware.authenticate], controllers.accounts.getNotifications);
 	setupPageRoute(app, '/chats/:userslug?', middleware, [middleware.redirectToLoginIfGuest], controllers.accounts.getChats);
+
+	setupPageRoute(app, '/user/confirm', middleware, middlewares, controllers.accounts.confirmUserRegEmail);
 }
 
 function userRoutes(app, middleware, controllers) {
