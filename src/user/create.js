@@ -33,6 +33,8 @@ module.exports = function(User) {
 				'username': data.username,
 				'userslug': data.userslug,
 				'email': data.email,
+				// 记录最初注册的邮箱
+				'register_email': data.email,
 				'joindate': timestamp,
 				// 注释掉这两项
 				//'picture': gravatar,
