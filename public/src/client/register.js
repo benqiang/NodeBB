@@ -6,7 +6,8 @@
 define('forum/register', ['csrf', 'translator'], function(csrf, translator) {
 	var Register = {},
 		validationError = false,
-		successIcon = '<i class="fa fa-check"></i>';
+		successIcon = '<i class="fa fa-check"></i>',
+		register_to_home = 0; // 0 提交表单，1 跳回主站， 2 回论坛首页
 
 	Register.init = function() {
 		var email = $('#email'),
@@ -66,6 +67,16 @@ define('forum/register', ['csrf', 'translator'], function(csrf, translator) {
 		register.on('click', function(e) {
 			var registerBtn = $(this);
 			e.preventDefault();
+
+			if (register_to_home == 1) {
+				window.location.href = 'http://xintuomarket.com/';
+				return;
+			} else if (register_to_home == 2) {
+				window.location.href = 'http://bbs.xintuomarket.com/';
+				return;
+			}
+
+
 			validateForm(function() {
 				if (!validationError) {
 					registerBtn.addClass('disabled');
@@ -82,6 +93,12 @@ define('forum/register', ['csrf', 'translator'], function(csrf, translator) {
 							if (data.referrer) {
 								window.location.href = data.referrer;
 							} else if (data.message) {
+								if (data.from) {
+									register_to_home = 1;
+								} else {
+									register_to_home = 2;
+								}
+								registerBtn.text('等待管理员审核，点击回首页');
 								app.alert({message: data.message, timeout: 20000});
 							}
 						},
@@ -92,6 +109,7 @@ define('forum/register', ['csrf', 'translator'], function(csrf, translator) {
 								errorEl.show();
 								registerBtn.removeClass('disabled');
 							});
+
 						}
 					});
 				}

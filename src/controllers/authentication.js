@@ -146,6 +146,13 @@ authenticationController.register = function(req, res, next) {
 			data.referrer = req.body.nextTo;
 
 		}
+
+		if (req.body.nextTo) {
+			data.from = 1;
+		} else {
+			data.from = 0;
+		}
+
 		winston.verbose('done-reg data=' + JSON.stringify(data));
 		res.json(data);
 	});
