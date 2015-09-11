@@ -70,6 +70,8 @@
 			router.post('/login', Auth.middleware.applyCSRF, controllers.authentication.login);
 			router.post('/logout', Auth.middleware.applyCSRF, controllers.authentication.logout);
 
+			router.get('/logout', controllers.authentication.logout);
+
 			hotswap.replace('auth', router);
 			if (typeof callback === 'function') {
 				callback();
