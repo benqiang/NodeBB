@@ -7,10 +7,20 @@ var url = require("url");
 var schedule = require("node-schedule");
 
 
+//var imap = new Imap({
+//	user: 'zhangbenqiang@yimian.com.cn',
+//	password: 'ivy123456',
+//	host: 'imap.exmail.qq.com',
+//	port: 993,
+//	tls: true
+//var host = 'http://localhost:4567';
+
+var host = 'http://bbs.xintuomarket.com';
+
 function checkoutEmail() {
 	var imap = new Imap({
-		user: 'zhangbenqiang@yimian.com.cn',
-		password: 'ivy123456',
+		user: 'info@xintuomarket.com',
+		password: 'xintuo123',
 		host: 'imap.exmail.qq.com',
 		port: 993,
 		tls: true
@@ -62,7 +72,7 @@ function checkoutEmail() {
 							if (result) {
 								console.log('[XTM] code=' + result[0]);
 
-								var tmpUrl = 'http://localhost:4567/user/confirm?from=emailreply&code=' + result[0];
+								var tmpUrl = host + '/user/confirm?from=emailreply&code=' + result[0];
 
 								http.get(tmpUrl, function(res){
 									res.setEncoding("utf-8");
@@ -88,7 +98,7 @@ function checkoutEmail() {
 								result = content.match(reg2);
 								if (result) {
 									console.log('[XTM] code=' + result[0]);
-									var tmpUrl = 'http://localhost:4567/confirm/'+ result[0] + '?from=emailreply';
+									var tmpUrl = host + '/confirm/'+ result[0] + '?from=emailreply';
 									http.get(tmpUrl, function(res){
 										res.setEncoding("utf-8");
 
