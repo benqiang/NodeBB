@@ -1,0 +1,5444 @@
+start emailservice
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+
+stdout: handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+
+stdout: => 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+
+stdout: => 'A5 SELECT "INBOX"'
+
+stdout: <= '* 19 EXISTS'
+
+stdout: <= '* 0 RECENT'
+
+stdout: <= '* OK [UNSEEN 3]'
+
+stdout: <= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1236] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1231'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1231 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1231 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+
+stdout: (#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+
+stdout: (#11)Finished
+<= '* 16 FETCH (UID 1231 FLAGS () INTERNALDATE "14-Sep-2015 20:23:43 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL "BASE64" 858 11 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL "BASE64" 1652 22 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048e7bf6051fb42284") NIL NIL) BODY[] {4736}'
+
+stdout: Message #16
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 16 FETCH (UID 1231 FLAGS () INTERNALDATE "14-Sep-2015 20:23:43 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL "BASE64" 858 11 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL "BASE64" 1652 22 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048e7bf6051fb42284") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#16)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048e7bf6051fb42284' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 858,
+         lines: 11,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 1652,
+         lines: 22,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 20:23:43 GMT+0800 (CST),
+  flags: [],
+  uid: 1231 }
+
+stdout: (#16)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=fxtmec6011df547f6d2c257303d3458a7d88fxtm
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+
+stdout: handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+
+stdout: => 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+
+stdout: => 'A5 SELECT "INBOX"'
+
+stdout: <= '* 19 EXISTS'
+
+stdout: <= '* 0 RECENT'
+
+stdout: <= '* OK [UNSEEN 3]'
+
+stdout: <= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1236] Predicted next UID'
+<= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+=> 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1231'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1231 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1231 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+
+stdout: (#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+
+stdout: (#11)Finished
+
+stdout: <= '* 16 FETCH (UID 1231 FLAGS () INTERNALDATE "14-Sep-2015 20:23:43 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL "BASE64" 858 11 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL "BASE64" 1652 22 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048e7bf6051fb42284") NIL NIL) BODY[] {4736}'
+
+stdout: Message #16
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 16 FETCH (UID 1231 FLAGS () INTERNALDATE "14-Sep-2015 20:23:43 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL "BASE64" 858 11 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL "BASE64" 1652 22 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048e7bf6051fb42284") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#16)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048e7bf6051fb42284' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 858,
+         lines: 11,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 1652,
+         lines: 22,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 20:23:43 GMT+0800 (CST),
+  flags: [],
+  uid: 1231 }
+
+stdout: (#16)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=fxtmec6011df547f6d2c257303d3458a7d88fxtm
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+
+stdout: => 'A5 SELECT "INBOX"'
+
+stdout: <= '* 19 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 3]'
+
+stdout: <= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1236] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1231'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1231 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1231 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+
+stdout: (#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+
+stdout: (#11)Finished
+<= '* 16 FETCH (UID 1231 FLAGS () INTERNALDATE "14-Sep-2015 20:23:43 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL "BASE64" 858 11 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL "BASE64" 1652 22 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048e7bf6051fb42284") NIL NIL) BODY[] {4736}'
+
+stdout: Message #16
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 16 FETCH (UID 1231 FLAGS () INTERNALDATE "14-Sep-2015 20:23:43 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL "BASE64" 858 11 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL "BASE64" 1652 22 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048e7bf6051fb42284") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#16)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048e7bf6051fb42284' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 858,
+         lines: 11,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 1652,
+         lines: 22,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 20:23:43 GMT+0800 (CST),
+  flags: [],
+  uid: 1231 }
+(#16)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=fxtmec6011df547f6d2c257303d3458a7d88fxtm
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 19 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 3]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1236] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1231'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1231 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1231 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+
+stdout: (#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+
+stdout: (#11)Finished
+<= '* 16 FETCH (UID 1231 FLAGS () INTERNALDATE "14-Sep-2015 20:23:43 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL "BASE64" 858 11 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL "BASE64" 1652 22 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048e7bf6051fb42284") NIL NIL) BODY[] {4736}'
+
+stdout: Message #16
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 16 FETCH (UID 1231 FLAGS () INTERNALDATE "14-Sep-2015 20:23:43 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL "BASE64" 858 11 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL "BASE64" 1652 22 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048e7bf6051fb42284") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#16)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048e7bf6051fb42284' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 858,
+         lines: 11,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 1652,
+         lines: 22,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 20:23:43 GMT+0800 (CST),
+  flags: [],
+  uid: 1231 }
+
+stdout: (#16)Finished
+Done fetching all messages!
+
+stdout: [XTM] code=fxtmec6011df547f6d2c257303d3458a7d88fxtm
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 20 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 4]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1238] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1231 1236'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1231, 1236 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1231,1236 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+
+stdout: (#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+
+stdout: (#11)Finished
+<= '* 16 FETCH (UID 1231 FLAGS () INTERNALDATE "14-Sep-2015 20:23:43 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL "BASE64" 858 11 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL "BASE64" 1652 22 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048e7bf6051fb42284") NIL NIL) BODY[] {4736}'
+
+stdout: Message #16
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 16 FETCH (UID 1231 FLAGS () INTERNALDATE "14-Sep-2015 20:23:43 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL "BASE64" 858 11 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL "BASE64" 1652 22 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048e7bf6051fb42284") NIL NIL) )'
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+
+stdout: Message #20
+
+stdout: INFO WHICH:  
+
+stdout: (#16)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048e7bf6051fb42284' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 858,
+         lines: 11,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 1652,
+         lines: 22,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 20:23:43 GMT+0800 (CST),
+  flags: [],
+  uid: 1231 }
+(#16)Finished
+
+stdout: [XTM] code=fxtmec6011df547f6d2c257303d3458a7d88fxtm
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'A8 STORE 16 FLAGS.SILENT (\\Seen)'
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+
+stdout: (#20)Finished
+Done fetching all messages!
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: {
+    "error": ""
+}
+
+stdout: <= 'A8 OK STORE completed'
+
+stdout: 测试 no error
+
+stdout: => 'A9 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A9 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+
+stdout: => 'A5 SELECT "INBOX"'
+
+stdout: <= '* 20 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 3]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1238] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+<= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+
+stdout: (#11)Finished
+<= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+
+stdout: Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 20 EXISTS'
+
+stdout: <= '* 0 RECENT'
+
+stdout: <= '* OK [UNSEEN 3]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1238] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 20 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 3]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1238] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+Message #20
+INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+
+stdout: (#20)Finished
+Done fetching all messages!
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 20 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 3]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1238] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+
+stdout: Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 20 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 3]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1238] Predicted next UID'
+<= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 20 EXISTS'
+<= '* 0 RECENT'
+<= '* OK [UNSEEN 3]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1238] Predicted next UID'
+<= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+Message #20
+INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+
+stdout: (#20)Finished
+Done fetching all messages!
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 20 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 3]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+<= '* OK [UIDNEXT 1238] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: Done fetching all messages!
+[XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+
+stdout: => 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 20 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 3]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1238] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+<= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+
+stdout: Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+
+stdout: handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 20 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 3]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1238] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+
+stdout: (#11)Finished
+<= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: <= '+ idling'
+=> DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+
+stdout: => 'A5 SELECT "INBOX"'
+
+stdout: <= '* 21 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 4]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1239] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236 1238'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236, 1238 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236,1238 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+
+stdout: Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) BODY[] {4827}'
+
+stdout: Message #21
+
+stdout: INFO WHICH:  
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#21)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AF9C_094C9868_2C511811' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 916,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2638,
+         lines: 37,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:06:21 GMT+0800 (CST),
+  flags: [],
+  uid: 1238 }
+(#21)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=fxtm9b49985eceadde509ad301150d93d686fxtm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: {
+    "err": null
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+=> 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 21 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 4]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1239] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+<= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236 1238'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236, 1238 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236,1238 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+
+stdout: Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) BODY[] {4827}'
+
+stdout: Message #21
+
+stdout: INFO WHICH:  
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#21)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AF9C_094C9868_2C511811' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 916,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2638,
+         lines: 37,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:06:21 GMT+0800 (CST),
+  flags: [],
+  uid: 1238 }
+(#21)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: [XTM] code=fxtm9b49985eceadde509ad301150d93d686fxtm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+
+stdout: handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 21 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 4]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1239] Predicted next UID'
+<= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236 1238'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236, 1238 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236,1238 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+
+stdout: Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) BODY[] {4827}'
+
+stdout: Message #21
+
+stdout: INFO WHICH:  
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#21)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AF9C_094C9868_2C511811' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 916,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2638,
+         lines: 37,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:06:21 GMT+0800 (CST),
+  flags: [],
+  uid: 1238 }
+
+stdout: (#21)Finished
+Done fetching all messages!
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: [XTM] code=fxtm9b49985eceadde509ad301150d93d686fxtm
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 21 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 4]'
+
+stdout: <= '* OK [UIDVALIDITY 1426234313] UID validity status'
+<= '* OK [UIDNEXT 1239] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236 1238'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236, 1238 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236,1238 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+
+stdout: Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) BODY[] {4827}'
+
+stdout: Message #21
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#21)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AF9C_094C9868_2C511811' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 916,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2638,
+         lines: 37,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:06:21 GMT+0800 (CST),
+  flags: [],
+  uid: 1238 }
+(#21)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=fxtm9b49985eceadde509ad301150d93d686fxtm
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 21 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 4]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1239] Predicted next UID'
+<= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236 1238'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236, 1238 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236,1238 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) BODY[] {4827}'
+
+stdout: Message #21
+
+stdout: INFO WHICH:  
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#21)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AF9C_094C9868_2C511811' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 916,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2638,
+         lines: 37,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:06:21 GMT+0800 (CST),
+  flags: [],
+  uid: 1238 }
+(#21)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=fxtm9b49985eceadde509ad301150d93d686fxtm
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 21 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 4]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1239] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+<= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236 1238'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236, 1238 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236,1238 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) BODY[] {4827}'
+
+stdout: Message #21
+
+stdout: INFO WHICH:  
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#21)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AF9C_094C9868_2C511811' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 916,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2638,
+         lines: 37,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:06:21 GMT+0800 (CST),
+  flags: [],
+  uid: 1238 }
+(#21)Finished
+
+stdout: Done fetching all messages!
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: [XTM] code=fxtm9b49985eceadde509ad301150d93d686fxtm
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 21 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 4]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1239] Predicted next UID'
+<= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236 1238'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236, 1238 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236,1238 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+
+stdout: Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) BODY[] {4827}'
+
+stdout: Message #21
+
+stdout: INFO WHICH:  
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#21)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AF9C_094C9868_2C511811' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 916,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2638,
+         lines: 37,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:06:21 GMT+0800 (CST),
+  flags: [],
+  uid: 1238 }
+
+stdout: (#21)Finished
+Done fetching all messages!
+
+stdout: [XTM] code=fxtm9b49985eceadde509ad301150d93d686fxtm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '+ idling'
+=> DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 21 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 4]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+
+stdout: <= '* OK [UIDNEXT 1239] Predicted next UID'
+<= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236 1238'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236, 1238 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236,1238 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+
+stdout: Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) BODY[] {4827}'
+
+stdout: Message #21
+
+stdout: INFO WHICH:  
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#21)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AF9C_094C9868_2C511811' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 916,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2638,
+         lines: 37,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:06:21 GMT+0800 (CST),
+  flags: [],
+  uid: 1238 }
+(#21)Finished
+
+stdout: Done fetching all messages!
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: [XTM] code=fxtm9b49985eceadde509ad301150d93d686fxtm
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+
+stdout: { recurs: true,
+  year: null,
+  month: null,
+  date: null,
+  dayOfWeek: null,
+  hour: null,
+  minute: null,
+  second: { start: 0, end: 59, step: 20 } }
+handle email---------------------------
+
+stdout: [connection] Connected to host
+
+stdout: <= '* OK [CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE ID UIDPLUS AUTH=LOGIN NAMESPACE] QQMail IMAP4Server ready'
+
+stdout: => 'A0 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE AUTH=LOGIN NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A0 OK CAPABILITY Completed'
+
+stdout: => 'A1 LOGIN "zhangbenqiang@yimian.com.cn" "ivy123456"'
+
+stdout: <= 'A1 OK Success login ok'
+
+stdout: => 'A2 CAPABILITY'
+
+stdout: <= '* CAPABILITY IMAP4 IMAP4rev1 IDLE XAPPLEPUSHSERVICE NAMESPACE CHILDREN ID UIDPLUS'
+
+stdout: <= 'A2 OK CAPABILITY Completed'
+
+stdout: => 'A3 NAMESPACE'
+
+stdout: <= '* NAMESPACE (("" "/")) NIL NIL'
+
+stdout: <= 'A3 OK Success'
+=> 'A4 LIST "" ""'
+
+stdout: <= '* LIST (\\NoSelect) "/" "/"'
+
+stdout: <= 'A4 OK LIST completed'
+=> 'A5 SELECT "INBOX"'
+
+stdout: <= '* 21 EXISTS'
+
+stdout: <= '* 0 RECENT'
+<= '* OK [UNSEEN 4]'
+<= '* OK [UIDVALIDITY 1426234313] UID validity status'
+<= '* OK [UIDNEXT 1239] Predicted next UID'
+
+stdout: <= '* FLAGS (\\Answered \\Flagged \\Deleted \\Draft \\Seen)'
+
+stdout: <= '* OK [PERMANENTFLAGS (\\* \\Answered \\Flagged \\Deleted \\Draft \\Seen)] Permanent flags'
+
+stdout: <= 'A5 OK [READ-WRITE] SELECT complete'
+
+stdout: => 'A6 UID SEARCH UNSEEN SINCE 28-Jul-2015'
+
+stdout: <= '* SEARCH 1224 1225 1236 1238'
+
+stdout: <= 'A6 OK UID SEARCH completed'
+
+stdout: [ 1224, 1225, 1236, 1238 ]
+
+stdout: => 'A7 UID FETCH 1224,1225,1236,1238 (UID FLAGS INTERNALDATE BODYSTRUCTURE BODY[])'
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) BODY[] {2079}'
+
+stdout: Message #10
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 10 FETCH (UID 1224 FLAGS () INTERNALDATE "14-Sep-2015 11:08:22 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "UTF-8") NIL NIL NIL 27 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "UTF-8") NIL NIL NIL 48 2 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "047d7b3a96048ab113051fac6007") NIL NIL) )'
+
+stdout: (#10)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '047d7b3a96048ab113051fac6007' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 27,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'UTF-8' },
+         id: null,
+         description: null,
+         encoding: null,
+         size: 48,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:08:22 GMT+0800 (CST),
+  flags: [],
+  uid: 1224 }
+(#10)Finished
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) BODY[] {1436}'
+
+stdout: Message #11
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 11 FETCH (UID 1225 FLAGS () INTERNALDATE "14-Sep-2015 11:51:29 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "utf-8") NIL NIL "BASE64" 36 2 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "utf-8") NIL NIL "BASE64" 126 3 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F6443F_0B081C18_7EEB656E") NIL NIL) )'
+
+stdout: (#11)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F6443F_0B081C18_7EEB656E' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 36,
+         lines: 2,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'utf-8' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 126,
+         lines: 3,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Mon Sep 14 2015 11:51:29 GMT+0800 (CST),
+  flags: [],
+  uid: 1225 }
+(#11)Finished
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) BODY[] {4683}'
+
+stdout: Message #20
+
+stdout: INFO WHICH:  
+
+stdout: <= '* 20 FETCH (UID 1236 FLAGS () INTERNALDATE "17-Sep-2015 02:03:09 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 924 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2494 35 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AEDC_09DF0A08_4CB7C896") NIL NIL) )'
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) BODY[] {4827}'
+
+stdout: Message #21
+
+stdout: INFO WHICH:  
+
+stdout: (#20)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AEDC_09DF0A08_4CB7C896' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 924,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2494,
+         lines: 35,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:03:09 GMT+0800 (CST),
+  flags: [],
+  uid: 1236 }
+(#20)Finished
+
+stdout: [XTM] code=extmd240424880e5513bebb05d438b7dac0bextm
+
+stdout: <= '* 21 FETCH (UID 1238 FLAGS () INTERNALDATE "17-Sep-2015 02:06:21 +0800" BODYSTRUCTURE (("TEXT" "PLAIN" ("CHARSET" "gb18030") NIL NIL "BASE64" 916 14 NIL NIL NIL)("TEXT" "HTML" ("CHARSET" "gb18030") NIL NIL "BASE64" 2638 37 NIL NIL NIL) "ALTERNATIVE" ("BOUNDARY" "----=_NextPart_55F9AF9C_094C9868_2C511811") NIL NIL) )'
+
+stdout: <= 'A7 OK UID FETCH completed'
+
+stdout: => 'IDLE IDLE'
+
+stdout: (#21)Attributes: { struct: 
+   [ { type: 'alternative',
+       params: { boundary: '----=_NextPart_55F9AF9C_094C9868_2C511811' },
+       disposition: null,
+       language: null },
+     [ { partID: '1',
+         type: 'text',
+         subtype: 'plain',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 916,
+         lines: 14,
+         md5: null,
+         disposition: null,
+         language: null } ],
+     [ { partID: '2',
+         type: 'text',
+         subtype: 'html',
+         params: { charset: 'gb18030' },
+         id: null,
+         description: null,
+         encoding: 'BASE64',
+         size: 2638,
+         lines: 37,
+         md5: null,
+         disposition: null,
+         language: null } ] ],
+  date: Thu Sep 17 2015 02:06:21 GMT+0800 (CST),
+  flags: [],
+  uid: 1238 }
+(#21)Finished
+
+stdout: Done fetching all messages!
+
+stdout: {
+    "error": "[[error:invalid-data]]"
+}
+
+stdout: [XTM] code=fxtm9b49985eceadde509ad301150d93d686fxtm
+
+stdout: {
+    "err": "The code is not exist."
+}
+
+stdout: <= '+ idling'
+
+stdout: => DONE
+
+stdout: <= 'IDLE OK IDLE terminated'
+
+stdout: => 'A8 LOGOUT'
+
+stdout: <= '* BYE LOGOUT received'
+
+stdout: <= 'A8 OK LOGOUT Completed'
+

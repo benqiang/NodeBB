@@ -169,10 +169,22 @@ Controllers.compose = function(req, res, next) {
 };
 
 Controllers.confirmEmail = function(req, res, next) {
-	user.email.confirm(req.params.code, function (err) {
-		res.render('confirm', {
-			error: err ? err.message : ''
-		});
+	user.email.confirm(req.params.code, function (err, uid) {
+
+		if (req.query.from) { // 处理完通过邮件回复验证码的邮箱修改，修改成功后，给用户回复邮件
+			if (!err) {
+				user.email.notifyModifySucByEmailReply(uid, function(err) {
+					res.json({error: err ? err.message : ''});
+				});
+			} else {
+				res.json({error: err ? err.message : ''});
+			}
+		} else {
+			res.render('confirm', {
+				error: err ? err.message : ''
+			});
+		}
+
 	});
 };
 

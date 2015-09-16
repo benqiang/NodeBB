@@ -60,6 +60,7 @@ module.exports = function(User) {
 				User.getUserField(uid, 'email', function(err, email) {
 					if(email === data.email) {
 						return next();
+
 					}
 
 					User.email.available(data.email, function(err, available) {
@@ -141,7 +142,7 @@ module.exports = function(User) {
 						return callback(err);
 					}
 					plugins.fireHook('action:user.updateProfile', {data: data, uid: uid});
-					User.getUserFields(uid, ['email', 'username', 'userslug', 'picture', 'gravatarpicture'], callback);
+					User.getUserFields(uid, ['email', 'modify_email', 'username', 'userslug', 'picture', 'gravatarpicture'], callback);
 				});
 			});
 
@@ -168,7 +169,7 @@ module.exports = function(User) {
 	};
 
 	function updateEmail(uid, newEmail, callback) {
-		User.getUserFields(uid, ['email', 'picture', 'uploadedpicture'], function(err, userData) {
+		User.getUserFields(uid, ['email', 'modify_email', 'picture', 'uploadedpicture'], function(err, userData) {
 			if (err) {
 				return callback(err);
 			}
@@ -177,7 +178,11 @@ module.exports = function(User) {
 
 			if (userData.email === newEmail) {
 				return callback();
+
+			} else if (userData.modify_email === newEmail) { // 如果与前一次未确认的邮箱相同，不处理
+				return callback();
 			}
+
 			async.series([
 				async.apply(db.sortedSetRemove, 'email:uid', userData.email.toLowerCase()),
 				async.apply(db.sortedSetRemove, 'email:sorted', userData.email.toLowerCase() + ':' + uid)
@@ -186,8 +191,10 @@ module.exports = function(User) {
 					return callback(err);
 				}
 
-				var gravatarpicture = User.createGravatarURLFromEmail(newEmail);
-				async.parallel([
+				//var gravatarpicture = User.createGravatarURLFromEmail(newEmail);
+				var gravatarpicture = '';
+
+					async.parallel([
 					function(next) {
 						User.setUserField(uid, 'gravatarpicture', gravatarpicture, next);
 					},
@@ -198,10 +205,16 @@ module.exports = function(User) {
 						db.sortedSetAdd('email:sorted',  0, newEmail.toLowerCase() + ':' + uid, next);
 					},
 					function(next) {
-						User.setUserField(uid, 'email', newEmail, next);
+
+						//改为先保存到modify_emalil中
+						User.setUserField(uid, 'modify_email', newEmail, next);
+					},
+					function(next) { // 清零，防止连续有效的改动，但因为之前已发送过邮件而导致不能发送的问题
+						db.set('uid:' + uid + ':confirm:email:sent', 0, next);
 					},
 					function(next) {
-						if (parseInt(meta.config.requireEmailConfirmation, 10) === 1 && newEmail) {
+						// 只要新邮件不为空，就发送验证邮件  parseInt(meta.config.requireEmailConfirmation, 10) === 1 &&
+						if (newEmail) {
 							User.email.sendValidationEmail(uid, newEmail);
 						}
 						User.setUserField(uid, 'email:confirmed', 0, next);

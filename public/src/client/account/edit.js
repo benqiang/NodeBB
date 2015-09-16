@@ -7,7 +7,8 @@ define('forum/account/edit', ['forum/account/header', 'uploader', 'translator'],
 		gravatarPicture = '',
 		uploadedPicture = '',
 		selectedImageType = '',
-		currentEmail;
+		currentEmail,
+		currentModifyEmail;
 
 	AccountEdit.init = function() {
 		gravatarPicture = ajaxify.data.gravatarpicture;
@@ -26,6 +27,7 @@ define('forum/account/edit', ['forum/account/header', 'uploader', 'translator'],
 		});
 
 		currentEmail = $('#inputEmail').val();
+		currentModifyEmail = $('#modifyEmail').text();
 
 		handleImageChange();
 		handleAccountDelete();
@@ -63,6 +65,17 @@ define('forum/account/edit', ['forum/account/header', 'uploader', 'translator'],
 
 			app.alertSuccess('[[user:profile_update_success]]');
 
+			if (data.modify_email && data.modify_email !== currentModifyEmail) {
+				app.alertSuccess('[[notifications:email-confirm-sent]]');
+				$('#confirm-email').removeClass('hide');
+				$('#layout_modifyEmail').removeClass('hide');
+				$('#modifyEmail').text(data.modify_email);
+
+				$('#inputEmail').val(data.email);
+
+				currentModifyEmail = data.modify_email;
+			}
+
 			if (data.picture) {
 				$('#user-current-picture').attr('src', data.picture);
 			}
@@ -81,10 +94,10 @@ define('forum/account/edit', ['forum/account/header', 'uploader', 'translator'],
 				$('.account-username-box').attr('data-userslug', data.userslug);
 			}
 
-			if (currentEmail !== data.email) {
-				currentEmail = data.email;
-				$('#confirm-email').removeClass('hide');
-			}
+			//if (currentEmail !== data.email) {
+			//	currentEmail = data.email;
+			//	$('#confirm-email').removeClass('hide');
+			//}
 
 			updateHeader(data.picture, userData.username, data.userslug);
 		});

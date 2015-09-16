@@ -50,8 +50,11 @@ SocketUser.emailExists = function(socket, data, callback) {
 };
 
 SocketUser.emailConfirm = function(socket, data, callback) {
-	if (socket.uid && parseInt(meta.config.requireEmailConfirmation, 10) === 1) {
-		user.getUserField(socket.uid, 'email', function(err, email) {
+
+	// && parseInt(meta.config.requireEmailConfirmation, 10) === 1
+
+	if (socket.uid) {
+		user.getUserField(socket.uid, 'modify_email', function(err, email) {
 			if (err) {
 				return callback(err);
 			}

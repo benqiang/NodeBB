@@ -90,7 +90,7 @@ module.exports = function(User) {
 				userData = _userData;
 
 				// 新增字段 --- 认证code
-				userData.confirm_code = md5(uuid.v4());
+				userData.confirm_code = getConfirmCode();
 
 				User.createWaitingConfirmUser(userData, next);
 			},
@@ -107,6 +107,7 @@ module.exports = function(User) {
 						subject: subject,
 						template: 'registration_accepted',
 						uid: uid,
+						confirm_code: userData.confirm_code,
 						confirm_url: host + 'user/confirm?code=' + userData.confirm_code
 					};
 					emailer.sendToEmail('registration_accepted', userData.email, 'zh_CN', data, next);
@@ -224,7 +225,7 @@ module.exports = function(User) {
 		], callback);
 	};
 
-	User.confirmUserRegEmail = function (confirm_code, callback) {
+	User.confirmUserRegEmail = function (confirm_code, from, callback) {
 		// 通过confirm_code查找waiting列表中的数据，将waiting列表的数据转到注册列表中
 		// 并从waiting列表删除
 		var uid;
@@ -236,6 +237,9 @@ module.exports = function(User) {
 			},
 			function(_wuid, next) {
 				wuid = _wuid;
+				if (!wuid) {
+					return next(new Error('The code is not exist.'));
+				}
 				db.getObject('waitingconfirm:user:' + _wuid, next)
 			},
 			function(_wUserData, next) {
@@ -250,6 +254,9 @@ module.exports = function(User) {
 				User.setUserField(uid, 'password', wUserData.hashedPassword, next);
 			},
 			function(next) {
+				User.setUserField(uid, 'email:confirmed', 1, next);
+			},
+			function(next) {
 				User.notifications.sendWelcomeNotification(uid, next);
 			},
 			function(next) {
@@ -257,10 +264,32 @@ module.exports = function(User) {
 			},
 			function(next) {
 				markNotificationRead(wUserData.username, next);
+			},
+			function(next) {
+				if (from) {
+					// 发邮件，告知通过回复邮件激活的用户--激活成功
+					notifySucByEmailReply(wUserData.username, wUserData.email, next);
+				}
 			}
 		], callback);
 
 	};
+
+	function notifySucByEmailReply(username, email, next) {
+		var title = meta.config.title || meta.config.browserTitle || '信托麦客';
+
+		var data = {
+			site_title: title,
+			username: username,
+			subject: '信托麦客账号激活成功',
+			template: 'regsuc_for_reply'
+		};
+		emailer.sendToEmail('regsuc_for_reply', email, 'zh_CN', data, next);
+	}
+
+	function getConfirmCode() {
+		return 'fxtm' + md5(uuid.v4()) + 'fxtm';
+	}
 
 	function md5(data) {
 		var Buffer = require("buffer").Buffer;

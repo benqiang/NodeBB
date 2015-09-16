@@ -592,16 +592,23 @@ accountsController.getChats = function(req, res, callback) {
 
 accountsController.confirmUserRegEmail = function(req, res, next) {
 	var confirm_code = req.query.code;
-	user.confirmUserRegEmail(confirm_code, function(err, result) {
+	var from = req.query.from;
+
+	user.confirmUserRegEmail(confirm_code, from, function(err, result) {
 		var data = {};
 		if (err) {
-			data.err = err;
-			winston.verbose('confirmUserRegEmail failed. err = ' + err.message);
+			data.err = err.message;
+			//winston.verbose('confirmUserRegEmail failed. err = ' + err.message);
 		} else {
 			data.err = null;
 			winston.verbose('confirmUserRegEmail suc');
 		}
-		res.render('result_reg_email_confirm', data);
+		if (!from) {
+			res.render('result_reg_email_confirm', data);
+		} else {
+			//winston.verbose('confirmUserRegEmail data = ' + JSON.stringify(data));
+			res.json(data);
+		}
 	});
 };
 

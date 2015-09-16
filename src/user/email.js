@@ -5,6 +5,8 @@ var async = require('async'),
 	nconf = require('nconf'),
 	winston = require('winston'),
 
+	uuid = require('uuid'),
+
 	user = require('../user'),
 	utils = require('../../public/src/utils'),
 	translator = require('../../public/src/modules/translator'),
@@ -29,10 +31,13 @@ var async = require('async'),
 
 	UserEmail.sendValidationEmail = function(uid, email, callback) {
 		callback = callback || function() {};
-		var confirm_code = utils.generateUUID(),
+		//var confirm_code = utils.generateUUID(),
+		var confirm_code = getConfirmCode(),
 			confirm_link = nconf.get('url') + '/confirm/' + confirm_code;
 
 		var emailInterval = 10;
+
+		winston.verbose('confirm_link = ' + confirm_link);
 
 		async.waterfall([
 			function(next) {
@@ -40,6 +45,7 @@ var async = require('async'),
 			},
 			function(sent, next) {
 				if (sent) {
+					winston.verbose('error:confirm-email-already-sent');
 					return next(new Error('[[error:confirm-email-already-sent, ' + emailInterval + ']]'));
 				}
 				db.set('uid:' + uid + ':confirm:email:sent', 1, next);
@@ -64,7 +70,7 @@ var async = require('async'),
 				user.getUserField(uid, 'username', next);
 			},
 			function(username, next) {
-				var title = meta.config.title || meta.config.browserTitle || 'NodeBB';
+				var title = meta.config.title || meta.config.browserTitle || '信托麦客';
 				translator.translate('[[email:welcome-to, ' + title + ']]', meta.config.defaultLang, function(subject) {
 					var data = {
 						site_title: title,
@@ -72,8 +78,8 @@ var async = require('async'),
 						confirm_link: confirm_link,
 						confirm_code: confirm_code,
 
-						subject: subject,
-						template: 'welcome',
+						subject: '邮箱修改确认',
+						template: 'email_modify',
 						uid: uid
 					};
 
@@ -81,7 +87,7 @@ var async = require('async'),
 						plugins.fireHook('action:user.verify', {uid: uid, data: data});
 						next();
 					} else if (plugins.hasListeners('action:email.send')) {
-						emailer.send('welcome', uid, data, next);
+						emailer.sendToEmail('email_modify', email, 'zh_CN', data, next);
 					} else {
 						winston.warn('No emailer to send verification email!');
 						next();
@@ -100,14 +106,50 @@ var async = require('async'),
 			if (confirmObj && confirmObj.uid && confirmObj.email) {
 				async.series([
 					async.apply(user.setUserField, confirmObj.uid, 'email:confirmed', 1),
+					async.apply(user.setUserField, confirmObj.uid, 'email', confirmObj.email),
+					async.apply(user.setUserField, confirmObj.uid, 'modify_email', ''),
 					async.apply(db.delete, 'confirm:' + code)
 				], function(err) {
-					callback(err ? new Error('[[error:email-confirm-failed]]') : null);
+					callback(err ? new Error('[[error:email-confirm-failed]]') : null, confirmObj.uid);
 				});
 			} else {
 				callback(new Error('[[error:invalid-data]]'));
 			}
 		});
+	};
+
+	UserEmail.notifyModifySucByEmailReply = function(uid, callback) {
+
+		async.waterfall([
+			function(next) {
+				user.getUserFields(uid, ['username', 'email'], next);
+			},
+			function(userData, next) {
+				var title = meta.config.title || meta.config.browserTitle || '信托麦客';
+
+				var data = {
+					site_title: title,
+					username: userData.username,
+					subject: '信托麦客邮箱修改成功',
+					template: 'email_modifysuc_reply'
+				};
+				emailer.sendToEmail('email_modifysuc_reply', userData.email, 'zh_CN', data, next);
+			}
+
+		], callback);
+
+	};
+
+	function getConfirmCode() {
+		return 'extm' + md5(uuid.v4()) + 'extm';
+	};
+
+	function md5(data) {
+		var Buffer = require("buffer").Buffer;
+		var buf = new Buffer(data);
+		var str = buf.toString("binary");
+		var crypto = require("crypto");
+		return crypto.createHash("md5").update(str).digest("hex");
 	};
 
 }(exports));
