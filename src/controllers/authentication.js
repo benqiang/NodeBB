@@ -348,10 +348,20 @@ authenticationController.logout = function(req, res, next) {
 			req.logout();
 
 			plugins.fireHook('action:user.loggedOut', {req: req, res: res, uid: uid});
-			res.status(200).send('');
+			res.writeHead(
+				200,
+				{'Access-Control-Allow-Origin':'http://xintuomarket.com'}
+			);
+			res.end('');
+			//res.status(200).send('');
 		});
 	} else {
-		res.status(200).send('');
+		res.writeHead(
+			200,
+			{'Access-Control-Allow-Origin':'http://xintuomarket.com'}
+		);
+		res.end('');
+		//res.status(200).send('');
 	}
 };
 
