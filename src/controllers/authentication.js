@@ -338,7 +338,11 @@ authenticationController.localLogin = function(req, username, password, next) {
 };
 
 authenticationController.logout = function(req, res, next) {
+        
+        winston.verbose('req.sessionID = ' + req.sessionID);
+
 	if (req.user && parseInt(req.user.uid, 10) > 0 && req.sessionID) {
+                winston.verbose('not null');
 		var uid = parseInt(req.user.uid, 10);
 		require('../socket.io').logoutUser(req.user.uid);
 		db.sessionStore.destroy(req.sessionID, function(err) {
@@ -348,6 +352,9 @@ authenticationController.logout = function(req, res, next) {
 			req.logout();
 
 			plugins.fireHook('action:user.loggedOut', {req: req, res: res, uid: uid});
+                        if (req.query.next) {
+                            return res.redirect(req.query.next);
+                        }
 			res.writeHead(
 				200,
 				{'Access-Control-Allow-Origin':'http://xintuomarket.com'}
@@ -356,6 +363,10 @@ authenticationController.logout = function(req, res, next) {
 			//res.status(200).send('');
 		});
 	} else {
+                if (req.query.next) {
+                    return res.redirect(req.query.next);
+                }
+                winston.verbose('null----do nothing');
 		res.writeHead(
 			200,
 			{'Access-Control-Allow-Origin':'http://xintuomarket.com'}
