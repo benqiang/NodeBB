@@ -21,7 +21,8 @@ module.exports = function(User) {
 			'bq_registration_company',
 			//'bq_registration_company_email',
 			'bq_registration_mobile',
-			'bq_registration_wechat'
+			'bq_registration_wechat',
+			'bq_registration_address'
 		];
 
 		plugins.fireHook('filter:user.updateProfile', {uid: uid, data: data, fields: fields}, function(err, data) {

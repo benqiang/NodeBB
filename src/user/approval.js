@@ -41,7 +41,9 @@ module.exports = function(User) {
 					//bq_registration_company_email: userData.bq_registration_company_email,
 					bq_registration_mobile: userData.bq_registration_mobile,
 					bq_registration_wechat: userData.bq_registration_wechat,
-					bq_reg_has_authenticated: userData.bq_reg_has_authenticated
+					bq_reg_has_authenticated: userData.bq_reg_has_authenticated,
+					bq_registration_address: userData.bq_registration_address,
+					bq_registration_referrer: userData.bq_registration_referrer
 				};
 
 				db.setObject('registration:queue:name:' + userData.username, data, next);

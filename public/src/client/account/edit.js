@@ -55,7 +55,8 @@ define('forum/account/edit', ['forum/account/header', 'uploader', 'translator'],
 			bq_registration_company: $('#bq_registration_company').val(),
 			bq_registration_company_email: $('#bq_registration_company_email').val(),
 			bq_registration_mobile: $('#bq_registration_mobile').val(),
-			bq_registration_wechat: $('#bq_registration_wechat').val()
+			bq_registration_wechat: $('#bq_registration_wechat').val(),
+			bq_registration_address: $('#bq_registration_address').val()
 		};
 
 		socket.emit('user.updateProfile', userData, function(err, data) {

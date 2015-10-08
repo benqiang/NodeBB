@@ -77,6 +77,14 @@ module.exports = function(User) {
 			if (data.bq_reg_has_authenticated) {
 				userData['bq_reg_has_authenticated'] = data.bq_reg_has_authenticated;
 			}
+			if (data.bq_registration_address) {
+				userData['bq_registration_address'] = data.bq_registration_address;
+			} else {
+				userData['bq_registration_address'] = '';
+			}
+			if (data.bq_registration_referrer) {
+				userData['bq_registration_referrer'] = data.bq_registration_referrer;
+			}
 
 			async.parallel({
 				renamedUsername: function(next) {
@@ -244,6 +252,8 @@ module.exports = function(User) {
 			'bq_registration_wechat': data.bq_registration_wechat,
 			'bq_registration_namecard': data.bq_registration_namecard,
 			'bq_reg_has_authenticated': data.bq_reg_has_authenticated,
+			'bq_registration_address': data.bq_registration_address,
+			'bq_registration_referrer': data.bq_registration_referrer,
 			'confirm_code': data.confirm_code
 		};
 		async.waterfall([
