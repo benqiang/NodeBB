@@ -4,6 +4,7 @@
 var async = require('async'),
 	nconf = require('nconf'),
 	request = require('request'),
+	winston = require('winston'),
 
 	uuid = require('uuid'),
 
@@ -233,9 +234,11 @@ module.exports = function(User) {
 		var wUserData;
 		async.waterfall([
 			function(next) {
+				winston.verbose('get waiting uid by confirm_code');
 				db.sortedSetScore('confirm_code:uid', confirm_code, next);
 			},
 			function(_wuid, next) {
+				winston.verbose('get waiting userdata by wuid = ' + _wuid);
 				wuid = _wuid;
 				if (!wuid) {
 					return next(new Error('The code is not exist.'));
@@ -243,6 +246,7 @@ module.exports = function(User) {
 				db.getObject('waitingconfirm:user:' + _wuid, next)
 			},
 			function(_wUserData, next) {
+				winston.verbose('create user by waiting userdata');
 				wUserData = _wUserData;
 				if (!_wUserData) {
 					return callback(new Error('The user is not exist.'));
@@ -250,25 +254,33 @@ module.exports = function(User) {
 				User.create(wUserData, next);
 			},
 			function(_uid, next) {
+				winston.verbose('set user hash password');
 				uid = _uid;
 				User.setUserField(uid, 'password', wUserData.hashedPassword, next);
 			},
 			function(next) {
+				winston.verbose('set user email confirmed 1');
 				User.setUserField(uid, 'email:confirmed', 1, next);
 			},
 			function(next) {
+				winston.verbose('sendWelcomeNotification');
 				User.notifications.sendWelcomeNotification(uid, next);
 			},
 			function(next) {
+				winston.verbose('removeFromWaitConfirmQueue by confirm_code');
 				removeFromWaitConfirmQueue(confirm_code, wuid, next);
 			},
 			function(next) {
+				winston.verbose('markNotificationRead');
 				markNotificationRead(wUserData.username, next);
 			},
 			function(next) {
+				winston.verbose('if from !=null send email. or back');
 				if (from) {
 					// 发邮件，告知通过回复邮件激活的用户--激活成功
 					notifySucByEmailReply(wUserData.username, wUserData.email, next);
+				} else {
+					next();
 				}
 			}
 		], callback);

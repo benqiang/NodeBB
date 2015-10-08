@@ -594,18 +594,22 @@ accountsController.confirmUserRegEmail = function(req, res, next) {
 	var confirm_code = req.query.code;
 	var from = req.query.from;
 
+	winston.verbose('confirmUserRegEmail from = ' + from);
+
 	user.confirmUserRegEmail(confirm_code, from, function(err, result) {
 		var data = {};
 		if (err) {
 			data.err = err.message;
-			//winston.verbose('confirmUserRegEmail failed. err = ' + err.message);
+			winston.verbose('confirmUserRegEmail failed. err = ' + err.toString());
 		} else {
 			data.err = null;
 			winston.verbose('confirmUserRegEmail suc');
 		}
 		if (!from) {
+			winston.verbose('confirmUserRegEmail notify from == null, click');
 			res.render('result_reg_email_confirm', data);
 		} else {
+			winston.verbose('confirmUserRegEmail from != null, email reply');
 			//winston.verbose('confirmUserRegEmail data = ' + JSON.stringify(data));
 			res.json(data);
 		}
