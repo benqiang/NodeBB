@@ -148,6 +148,14 @@ middleware.checkAccountPermissions = function(req, res, next) {
 	});
 };
 
+// add by jacky to ensure only login user can read topic content.
+middleware.isLogined = function(req, res, next) {
+	if (!req.user) {
+		return redirectToLogin(req, res);
+	}
+	next();
+}
+
 middleware.isAdmin = function(req, res, next) {
 	if (!req.user) {
 		return redirectToLogin(req, res);

@@ -120,6 +120,10 @@ module.exports = function(app, middleware) {
 	var ensureLoggedIn = require('connect-ensure-login');
 	app.all(relativePath + '/admin/?*', ensureLoggedIn.ensureLoggedIn(nconf.get('relative_path') + '/login?local=1'), middleware.applyCSRF, middleware.isAdmin);
 
+	// add by jacky to ensure only login user can read topic content.
+	app.all(relativePath + '/api/topic/?*', middleware.isLogined);
+	app.all(relativePath + '/topic/?*', ensureLoggedIn.ensureLoggedIn(nconf.get('relative_path') + '/login?local=1'), middleware.applyCSRF);
+
 	adminRoutes(router, middleware, controllers);
 	metaRoutes(router, middleware, controllers);
 	apiRoutes(router, middleware, controllers);
