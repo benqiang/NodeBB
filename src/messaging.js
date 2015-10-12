@@ -406,6 +406,10 @@ var db = require('./database'),
 		], callback);
 	};
 
+	Messaging.deleteChat = function(selfUid, fromUid, callback) {
+		db.sortedSetRemove('uid:' + selfUid + ':chats', fromUid, callback);
+	};
+
 	function sendNotifications(fromuid, touid, messageObj, callback) {
 		if (sockets.isUserOnline(touid)) {
 			return callback();

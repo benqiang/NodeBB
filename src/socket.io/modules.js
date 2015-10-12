@@ -133,6 +133,10 @@ SocketModules.chats.toggleNew = function(socket, data, callback) {
 	rooms.broadcast(socket, 'uid_' + socket.uid, 'event:chats.toggleNew', data);
 };
 
+/* add by jacky. */
+SocketModules.chats.delete = function(socket, data, callback) {
+	Messaging.deleteChat(socket.uid, data.fromUid, callback);
+}
 
 /* Sounds */
 SocketModules.sounds.getSounds = function(socket, data, callback) {
