@@ -407,6 +407,7 @@ var db = require('./database'),
 	};
 
 	Messaging.deleteChat = function(selfUid, fromUid, callback) {
+		winston.verbose('Messaging.deleteChat. { selfUid: ' + selfUid + ', fromUid: ' + fromUid + ' }');
 		db.sortedSetRemove('uid:' + selfUid + ':chats', fromUid, callback);
 	};
 

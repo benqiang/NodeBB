@@ -4,6 +4,8 @@ var	meta = require('../meta'),
 	Messaging = require('../messaging'),
 	utils = require('../../public/src/utils'),
 
+	winston = require('winston'),
+
 	async = require('async'),
 
 	server = require('./'),
@@ -135,6 +137,7 @@ SocketModules.chats.toggleNew = function(socket, data, callback) {
 
 /* add by jacky. */
 SocketModules.chats.delete = function(socket, data, callback) {
+	winston.verbose('SocketModules.chats.delete');
 	Messaging.deleteChat(socket.uid, data.fromUid, callback);
 }
 

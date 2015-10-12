@@ -85,6 +85,9 @@ $(document).ready(function() {
 		return false;
 	};
 
+	ajaxify.handleRedirectWithoutIf = function(url) {
+		window.open(RELATIVE_PATH + '/' + url);
+	};
 
 	ajaxify.start = function(url, quiet) {
 		url = ajaxify.removeRelativePath(url.replace(/^\/|\/$/g, ''));

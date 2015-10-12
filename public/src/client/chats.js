@@ -106,7 +106,7 @@ define('forum/chats', ['components', 'string', 'sounds', 'forum/infinitescroll',
 			//$('.chats-list li[data-uid="' + strUid + '"]').addClass('hide');
 			socket.emit('modules.chats.delete', {fromUid: uid}, function(err, data) {
 				if (!err) {
-					ajaxify.go('chats/');
+					ajaxify.handleRedirectWithoutIf('chats');
 				}
 			});
 
