@@ -259,7 +259,7 @@ middleware.renderHeader = function(req, res, data, callback) {
 				next(null, {
 					username: '[[global:guest]]',
 					userslug: '',
-					picture: user.createGravatarURLFromEmail(''),
+					picture: '/uploads/profile/guest-profile.png',
 					status: 'offline',
 					banned: false,
 					uid: 0

@@ -122,14 +122,15 @@ var	async = require('async'),
 				user.uid = 0;
 				user.username = '[[global:guest]]';
 				user.userslug = '';
-				user.picture = User.createGravatarURLFromEmail('');
+				//user.picture = User.createGravatarURLFromEmail('');
+				user.picture = '/uploads/profile/guest-profile.png';
 			}
 
 			if (user.picture) {
 				if (user.picture === user.uploadedpicture) {
 					user.picture = user.uploadedpicture = user.picture.startsWith('http') ? user.picture : nconf.get('relative_path') + user.picture;
 				} else {
-					user.picture = User.createGravatarURLFromEmail(user.email);
+					user.picture = '/uploads/profile/0-profileimg.jpg';
 				}
 			}
 
@@ -296,22 +297,27 @@ var	async = require('async'),
 	};
 
 	User.createGravatarURLFromEmail = function(email) {
-		var customGravatarDefaultImage = meta.config.customGravatarDefaultImage;
-		if (customGravatarDefaultImage && customGravatarDefaultImage.indexOf('http') === -1) {
-			customGravatarDefaultImage = nconf.get('url') + meta.config.customGravatarDefaultImage;
+		//var customGravatarDefaultImage = meta.config.customGravatarDefaultImage;
+		//if (customGravatarDefaultImage && customGravatarDefaultImage.indexOf('http') === -1) {
+		//	customGravatarDefaultImage = nconf.get('url') + meta.config.customGravatarDefaultImage;
+		//}
+        //
+		//var options = {
+		//	size: parseInt(meta.config.profileImageDimension, 10) || 128,
+		//	default: customGravatarDefaultImage || meta.config.defaultGravatarImage || 'identicon',
+		//	rating: 'pg'
+		//};
+        //
+		//if (!email) {
+		//	email = '';
+		//}
+        //
+		//return gravatar.url(email, options, true);
+		if (email) {
+			return '/uploads/profile/0-profileimg.jpg';
+		} else {
+			return '/uploads/profile/guest-profile.png';
 		}
-
-		var options = {
-			size: parseInt(meta.config.profileImageDimension, 10) || 128,
-			default: customGravatarDefaultImage || meta.config.defaultGravatarImage || 'identicon',
-			rating: 'pg'
-		};
-
-		if (!email) {
-			email = '';
-		}
-
-		return gravatar.url(email, options, true);
 	};
 
 	User.hashPassword = function(password, callback) {
