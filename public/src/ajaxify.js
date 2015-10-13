@@ -86,7 +86,8 @@ $(document).ready(function() {
 	};
 
 	ajaxify.handleRedirectWithoutIf = function(url) {
-		window.open(RELATIVE_PATH + '/' + url);
+		//window.open(RELATIVE_PATH + '/' + url);
+		window.location.href = RELATIVE_PATH + '/' + url;
 	};
 
 	ajaxify.start = function(url, quiet) {

@@ -101,9 +101,8 @@ define('forum/chats', ['components', 'string', 'sounds', 'forum/infinitescroll',
 
 		$('.do-teaser-delete-chat').on('click', function() {
 			var $this = $(this);
-			//var uid = parseInt($this.attr('data-uid'), 10);
 			var uid = $this.attr('data-uid');
-			//$('.chats-list li[data-uid="' + strUid + '"]').addClass('hide');
+
 			socket.emit('modules.chats.delete', {fromUid: uid}, function(err, data) {
 				if (!err) {
 					ajaxify.handleRedirectWithoutIf('chats');
