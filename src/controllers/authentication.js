@@ -213,6 +213,9 @@ authenticationController.login = function(req, res, next) {
 			continueLogin(req, res, next);
 		});
 	} else if (loginWith.indexOf('username') !== -1 && !validator.isEmail(req.body.username)) {
+
+		winston.verbose('name = ' + req.body.username + ' pwd = ' + req.body.password);
+
 		continueLogin(req, res, next);
 	} else {
 		res.status(500).send('[[error:wrong-login-type-' + loginWith + ']]');

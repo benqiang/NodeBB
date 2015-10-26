@@ -63,7 +63,7 @@ function checkoutEmail() {
 							//	if(err) throw err;
 							//	console.log(prefix + 'saved!');
 							//});
-							var content = mail.html;
+							var content = mail.html ? mail.html : '';
 							var reg = /fxtm\w{2,}fxtm/g;
 
 							var reg2 = /extm\w{2,}extm/g;
